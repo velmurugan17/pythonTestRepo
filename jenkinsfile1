@@ -23,7 +23,7 @@ pipeline{
                     cd testenv
                     virtualenv --python=python3 pyenv
                     pwd
-                    source pyenv/bin/activate
+                    . pyenv/bin/activate
                     cd ..
                     pip install pytest
                 '''
