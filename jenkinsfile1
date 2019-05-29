@@ -4,11 +4,15 @@ pipeline{
         stage('Clean workspace'){
               steps{
                 echo "Cleaning workspace"
+                cleanWs()
               }
         }
         stage("Project checkout"){
             steps{
                 echo "Cloning the git repo"
+                git(
+                       url: 'https://github.com/velmurugan17/pythonTestRepo.git'
+                    )
             }
         }
         stage("Setting up environment"){
@@ -30,6 +34,12 @@ pipeline{
             steps{
                 echo "Archiving artifacts"
             }
+        }
+    }
+    post{
+        always{
+            cleanWs()
+            echo "Workspace is clear"
         }
     }
 }
