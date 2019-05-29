@@ -50,7 +50,7 @@ pipeline{
     post{
         always{
             junit "testResult.xml"
-            archive "testResult.xml"
+            archiveArtifacts "testResult.xml"
             echo "Workspace is clear"
         }
     }
