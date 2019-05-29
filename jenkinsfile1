@@ -32,8 +32,10 @@ pipeline{
         stage("Executing tests"){
             steps{
                 echo "Executing the tests"
-                pytest --junitxml=testResult.xml
-                deactivate
+                sh '''
+                    pytest --junitxml=testResult.xml
+                    deactivate
+                '''
             }
         }
         stage("Publishing test result"){
