@@ -1,0 +1,35 @@
+pipeline{
+    agent any
+    stages{
+        stage('Clean workspace'){
+              steps{
+                echo "Cleaning workspace"
+              }
+        }
+        stage("Project checkout"){
+            steps{
+                echo "Cloning the git repo"
+            }
+        }
+        stage("Setting up environment"){
+            steps{
+                echo "Setting up the environment"
+            }
+        }
+        stage("Executing tests"){
+            steps{
+                echo "Executing the tests"
+            }
+        }
+        stage("Publishing test result"){
+            steps{
+                echo "Publishing the test result"
+            }
+        }
+        stage("Artifacts"){
+            steps{
+                echo "Archiving artifacts"
+            }
+        }
+    }
+}
