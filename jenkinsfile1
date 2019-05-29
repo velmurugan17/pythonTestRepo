@@ -26,16 +26,14 @@ pipeline{
                     . pyenv/bin/activate
                     cd ..
                     pip install pytest
+                    pytest --junitxml=testResult.xml
+                    deactivate
                 '''
             }
         }
         stage("Executing tests"){
             steps{
                 echo "Executing the tests"
-                sh '''
-                    pytest --junitxml=testResult.xml
-                    deactivate
-                '''
             }
         }
         stage("Publishing test result"){
