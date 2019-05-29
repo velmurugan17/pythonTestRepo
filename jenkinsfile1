@@ -15,7 +15,7 @@ pipeline{
                     )
             }
         }
-        stage("Setting up environment"){
+        stage("Setting up environment and executing tests"){
             steps{
                 echo "Setting up the environment"
                 sh '''
@@ -29,11 +29,6 @@ pipeline{
                     pytest --junitxml=testResult.xml
                     deactivate
                 '''
-            }
-        }
-        stage("Executing tests"){
-            steps{
-                echo "Executing the tests"
             }
         }
         stage("Publishing test result"){
