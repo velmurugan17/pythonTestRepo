@@ -18,11 +18,22 @@ pipeline{
         stage("Setting up environment"){
             steps{
                 echo "Setting up the environment"
+                sh '''
+                    mkdir testenv
+                    cd testenv
+                    virtualenv --python=python3 pyenv
+                    pwd
+                    source pyenv/bin/activate
+                    cd ..
+                    pip install pytest
+                '''
             }
         }
         stage("Executing tests"){
             steps{
                 echo "Executing the tests"
+                pytest --junitxml=testResult.xml
+                deactivate
             }
         }
         stage("Publishing test result"){
